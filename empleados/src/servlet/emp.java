@@ -1,11 +1,8 @@
 package servlet;
 
 import java.io.IOException;
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.ResultSet;
+import java.io.PrintWriter;
 import java.sql.SQLException;
-import java.sql.Statement;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -13,22 +10,67 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import aux.CreaConexion;
+
+
 @WebServlet("/emp")
 public class emp extends HttpServlet {
 	
 	private static final long serialVersionUID = 1L;
     public emp(){super();}
+    
+    protected void empleado (HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException, ClassNotFoundException, SQLException {
+        
+        response.setContentType("text/html;charset=UTF-8");
+        PrintWriter out = response.getWriter();
+        
+        // Comprobar si la petición es mediante Ajax
+        Boolean esAjax;
+        esAjax="XMLHttpRequest".equalsIgnoreCase(request.getHeader("X-Requested-With")); // Cabecera X-Requested-With
+        if (esAjax) {
+        	
+        	CreaConexion con= new CreaConexion();
+        	//String datos="";
+        	String cargarDatos=request.getParameter("cargarDatos");
+        	
+        	if(cargarDatos!=null) {
+        		//datos=con.mostrarEmpleados();
+        		out.println(con.mostrarEmpleados());
+        	}//else {
+        		//out.println("asdasd");
+        	//}
+           
+                        
+        }    
+        else {
+            out.println("Este servlet solo se puede invocar via Ajax");
+        }    
+    }
 
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		response.getWriter().append("Served at: ").append(request.getContextPath());
-		
-		
-		
-		
+    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {		
+		try {
+			empleado(request, response);
+		} catch (ClassNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 
+	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		doGet(request, response);
+		try {
+			empleado(request, response);
+		} catch (ClassNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 
 }
