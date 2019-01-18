@@ -16,7 +16,7 @@ public class CreaConexion {
 		String fin="";
 		Statement sentencia = conexion().createStatement();
 		//ResultSet resultado = sentencia.executeQuery("Select emp.empno, emp.ename, emp.job, emp.mgr, emp.hiredate, emp.sal, emp.comm, dept.dname from emp,dept where emp.deptno = dept.deptno");
-		ResultSet resultado = sentencia.executeQuery("Select * from dept");
+		ResultSet resultado = sentencia.executeQuery("Select emp.empno, emp.ename, emp.job, emp.mgr, emp.hiredate, emp.sal, emp.comm, dept.dname from emp,dept where emp.deptno = dept.deptno");
 		while(resultado.next()) {
 			
 			fin = resultado.getString(1) +"#"+ resultado.getString(2) +"#"+ resultado.getString(3) +"#"+ resultado.getString(4) +"#"+

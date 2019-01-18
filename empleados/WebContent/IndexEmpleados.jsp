@@ -40,7 +40,7 @@
 	<div id="resultados">
 		<table>
 		<tr><td>fila1</td><td>fila1</td><td>fila1</td><td>fila1</td><td>fila1</td><td>fila1</td><td id="borrar"><div>x</div></td></tr>
-		<tr><td>fila2</td></tr>
+		<tr><td>fila</td></tr>
 		<tr><td></td></tr>
 		<tr><td></td></tr>
 		<tr><td></td></tr>

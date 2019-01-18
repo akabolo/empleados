@@ -38,7 +38,7 @@ public class emp extends HttpServlet {
         		//datos=con.mostrarEmpleados();
         		out.println(con.mostrarEmpleados());
         	}//else {
-        		//out.println("asdasd");
+        		//out.println("adasd");
         	//}
            
                         
