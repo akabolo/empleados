@@ -16,12 +16,14 @@ public class CreaConexion {
 		String fin="";
 		Statement sentencia = conexion().createStatement();
 		//ResultSet resultado = sentencia.executeQuery("Select emp.empno, emp.ename, emp.job, emp.mgr, emp.hiredate, emp.sal, emp.comm, dept.dname from emp,dept where emp.deptno = dept.deptno");
-		ResultSet resultado = sentencia.executeQuery("Select emp.empno, emp.ename, emp.job, emp.mgr, emp.hiredate, emp.sal, emp.comm, dept.dname from emp,dept where emp.deptno = dept.deptno");
+		ResultSet resultado = sentencia.executeQuery("Select * from emp");
 		while(resultado.next()) {
 			
-			fin = resultado.getString(1) +"#"+ resultado.getString(2) +"#"+ resultado.getString(3) +"#"+ resultado.getString(4) +"#"+
+			fin += resultado.getString(1) +"#"+ resultado.getString(2) +"#"+ resultado.getString(3) +"#"+ resultado.getString(4) +"#"+
 					resultado.getString(5) +"#"+ resultado.getString(6) +"#"+ resultado.getString(7) +"#"+ resultado.getString(8)+";";
+	
 		}
+		System.out.println(fin);
 		return fin;
 		
 	}

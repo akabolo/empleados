@@ -31,15 +31,11 @@ public class emp extends HttpServlet {
         if (esAjax) {
         	
         	CreaConexion con= new CreaConexion();
-        	//String datos="";
         	String cargarDatos=request.getParameter("cargarDatos");
         	
-        	if(cargarDatos!=null) {
-        		//datos=con.mostrarEmpleados();
+        	if(cargarDatos!=null) {	
         		out.println(con.mostrarEmpleados());
-        	}//else {
-        		//out.println("adasd");
-        	//}
+        	}
            
                         
         }    
